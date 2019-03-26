@@ -1,0 +1,77 @@
+<div class="container-fluid home_bg">
+   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  <div class="text-center display-text">
+    Reviews Hub
+  </div>
+  <div class="text-center review-text">
+    Download Amazon Reviews and Youtube Comments Within Seconds.
+  </div>
+
+  <br>
+
+  <div class="container-fluid">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <br>
+      <div>
+        <div class="form_details">
+          <form [formGroup]="reviewForm">
+            <div class="form_details">
+              <label class="text-left" style="color:white">Youtube Video or Amazon Product URL:</label>
+              <input class="form-control border-input" type="text" name="url" placeholder="https://www.amazon.com/....." formControlName="url" required>
+          </div>
+          <br>
+          <div class="form_details">
+              <label class="text-left" style="color:white">Email Address:</label>
+              <input class="form-control border-input" type="email" name="email" placeholder="Enter Email Address" formControlName="email" required>
+              <!--  <div *ngIf="loginForm.submitted && !password.valid" class="alert alert-danger"><strong>Missing something! </strong>Password is required</div>
+              -->
+              </div>
+              <br>
+              <div class="text-center form_details">
+              
+                  <a class="btn btn-lg btn-primary" (click)="submit()">Submit</a> 
+                </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="downloads_instr">
+        <p> Download Instructions:</p>
+        <p>1. Enter Youtube Video or Amazon Product URL</p>
+        <p>2. Enter the Email Address to recieve downloads</p>
+        <p>3. Click the Submit button</p>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <br>
+  <br>
+  <div class="text-center message">{{reviewResponse}}</div>
+  <div class="container table_color" *ngIf="reviews">
+   
+  <div class="table-responsive">
+      <table class="table table-bordered">
+      <thead>
+          <th>Username</th>
+          <th>Date</th>
+          <th>Star Rating</th>
+          <th>Review or Comment</th>
+          <th>Link</th>
+      </thead>
+        <tbody>
+          <tr *ngFor="let review of reviewData">
+              <td>{{review.username}}</td>
+              <td>{{review.date | date :  "dd.MM.yyyy"}}</td>
+              <td>{{review.rating}}</td>
+              <td>{{review.comment}}</td>
+              <td>{{review.link}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+</div>
